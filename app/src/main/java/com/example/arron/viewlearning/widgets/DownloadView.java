@@ -6,7 +6,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -67,11 +67,11 @@ public class DownloadView extends View {
         this(context, null);
     }
 
-    public DownloadView(Context context, @Nullable AttributeSet attrs) {
+    public DownloadView(Context context,  AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DownloadView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DownloadView(Context context,  AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -427,7 +427,7 @@ public class DownloadView extends View {
             float left = (mWidth - mCurrLength) / 2f;
             float right = (mWidth + mCurrLength) / 2f;
             float r = mHeight / 2f;
-            canvas.drawRoundRect(left, 0, right, mHeight, r, r, mBgPaint);
+            canvas.drawRoundRect(new RectF(left, 0, right, mHeight), r, r, mBgPaint);
             if (mStatus == Status.NORMAL) {
                 Paint.FontMetrics fm = mTextPaint.getFontMetrics();
                 float y = mHeight / 2 + (fm.descent - fm.ascent) / 2 - fm.descent;
@@ -461,7 +461,7 @@ public class DownloadView extends View {
             float left = (mWidth - mCurrLength) / 2f;
             float right = (mWidth + mCurrLength) / 2f;
             float r = mHeight / 2f;
-            canvas.drawRoundRect(left, 0, right, mHeight, r, r, mBgPaint);
+            canvas.drawRoundRect(new RectF(left, 0, right, mHeight), r, r, mBgPaint);
             canvas.save();
             mTextPaint.setStyle(Paint.Style.FILL);
             canvas.translate(mTranslationX, 0);
@@ -488,7 +488,7 @@ public class DownloadView extends View {
             float right = (mWidth + mCurrLength) / 2f;
             float r = mHeight / 2f;
             mBgPaint.setColor(mProgressColor);
-            canvas.drawRoundRect(left, 0, right, mHeight, r, r, mBgPaint);
+            canvas.drawRoundRect(new RectF(left, 0, right, mHeight), r, r, mBgPaint);
             if (mProgress != 100) {
                 for (int i = 0; i < mFourMovePoints.length; i++) {
                     if (mFourMovePoints[i].isDraw)
@@ -499,7 +499,7 @@ public class DownloadView extends View {
             mBgPaint.setColor(mBgColor);
             canvas.save();
             canvas.clipRect(0, 0, progressRight, mHeight);
-            canvas.drawRoundRect(left, 0, right, mHeight, r, r, mBgPaint);
+            canvas.drawRoundRect(new RectF(left, 0, right, mHeight), r, r, mBgPaint);
             canvas.restore();
 
             if (mProgress != 100) {

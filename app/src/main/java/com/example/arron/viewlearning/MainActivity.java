@@ -1,15 +1,15 @@
 package com.example.arron.viewlearning;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.arron.viewlearning.widgets.DownloadView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
